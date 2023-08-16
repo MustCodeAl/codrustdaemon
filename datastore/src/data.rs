@@ -48,15 +48,15 @@ enum AddHelpPageStatusType {
 }
 
 
-fn CheckExecutablePath(executable_path: String) -> bool {
+fn check_executable_path(executable_path: String) -> bool {
     todo!()
 }
 
-fn CheckHelpPage(help_page: HelpPage) -> bool {
+fn check_help_page(help_page: HelpPage) -> bool {
     todo!()
 }
 
-fn CanonizeExecutablePath(executable_path: String) -> String {
+fn canonize_executable_path(executable_path: String) -> String {
     todo!()
 }
 
