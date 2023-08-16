@@ -1,5 +1,3 @@
-
-
 use clap::Parser;
 
 #[derive(Parser)]
@@ -89,3 +87,15 @@ fn is_command_matching_context(command: Vec<String>, context: FlagContext) -> bo
 }
 
 
+
+
+
+fn main() {
+    // println!("Hello, world!");
+
+    // Command {
+    //     args: std::env::args(),
+        // env: vec![],
+        // dir: String::from(""),
+    // };
+}

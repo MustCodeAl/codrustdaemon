@@ -1,3 +1,6 @@
+use path::PathBuf;
+use std::path;
+
 #[derive(Debug, serde::Serialize, serde::Deserialize)]
 struct Configuration {
     app_name: String,
@@ -8,7 +11,7 @@ struct Configuration {
 }
 
 impl Default for Configuration {
-    fn default() -> Self {
+     fn default() -> Self {
         Self {
             app_name: String::from(""),
             config_dir: String::from(""),
@@ -21,46 +24,38 @@ impl Default for Configuration {
 }
 
 impl Configuration {
-    fn get_completion_db_dir(&self) -> String {
-        let path = format!("{}{}", self.data_dir, "completions");
-        path
+    pub fn completion_db_dir(&self) -> PathBuf {
+        format!("{}{}", self.data_dir, "completions").into()
     }
 
-    fn get_completions_sqlite_db(&self) -> String {
-        let path = format!("{}{}", self.data_dir, "db.sqlite3");
-        path
+    pub fn completions_sqlite_db(&self) -> PathBuf {
+        format!("{}{}", self.data_dir, "db.sqlite3").into()
     }
 
-    fn get_socket_file(&self) -> String {
-        let path = format!("{}{}{}", self.run_dir, self.app_name, ".sock");
-        path
+    pub fn socket_file(&self) -> PathBuf {
+        format!("{}{}{}", self.run_dir, self.app_name, ".sock").into()
     }
 
-    fn get_lock_file(&self) -> String {
-        let path = format!("{}{}{}", self.run_dir, self.app_name, ".lock");
-        path
+    pub fn lock_file(&self) -> PathBuf {
+        format!("{}{}{}", self.run_dir, self.app_name, ".lock").into()
     }
 
-    fn get_log_dir(&self) -> String {
-        let path = format!("{}{}", self.data_dir, "log");
-        path
+    pub fn log_dir(&self) -> PathBuf {
+        format!("{}{}", self.data_dir, "log").into()
     }
 
-    fn get_pid_file(&self) -> String {
-        let path = format!("{}{}{}", self.run_dir, self.app_name, ".pid");
-        path
+    pub fn pid_file(&self) -> PathBuf {
+        format!("{}{}{}", self.run_dir, self.app_name, ".pid").into()
     }
 
-    fn get_learn_blacklist_file(&self) -> String {
-        let path = format!("{}{}", self.data_dir, "learn-blacklist.txt");
-        path
+    pub fn learn_blacklist_file(&self) -> PathBuf {
+        format!("{}{}", self.data_dir, "learn-blacklist.txt").into()
     }
 
-    fn get_known_commands_file(&self) -> String {
-        let path = format!("{}{}", self.data_dir, "known-commands.toml");
-        path
+    pub fn known_commands_file(&self) -> PathBuf {
+        format!("{}{}", self.data_dir, "known-commands.toml").into()
     }
-    pub fn new(app_name: String, config_dir: String, data_dir: String, run_dir: String, home_dir: String) -> Self {
+    pub fn new() -> Self {
         let config: Self = confy::load("cod", "Cod").expect("failed to load config file");
         // Self { app_name, config_dir, data_dir, run_dir, home_dir }
         config
