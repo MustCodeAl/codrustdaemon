@@ -1,3 +1,8 @@
+
+
+use clap::Parser;
+
+#[derive(Parser)]
 pub struct Command {
     args: Vec<String>,
     env: Vec<String>,
