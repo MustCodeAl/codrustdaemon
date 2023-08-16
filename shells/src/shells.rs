@@ -4,14 +4,13 @@ trait ShellScriptGenerator {
     fn generate_completions(&self) -> Vec<String>;
     fn reset_command(&mut self) -> Vec<String>;
 }
-
+// pub use crate::datastore::data::completion;
+struct Completion;
 struct DataStore {
     completions: Vec<Completion>,
     shell: String,
     pid: u32,
 }
-
-struct Completion;
 
 enum ShellType {
     Bash,
