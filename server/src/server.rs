@@ -1,25 +1,30 @@
 // #[actix: get]
-struct Request();
+
+
+// todo have use actix
 
 use serde::{Serialize, Deserialize};
+use crate::errors::CLiError;
 
-impl Request {
-    fn body(&self) -> Option<&str> {
-        todo!()
-    }
-}
 
-struct HttpResponse {}
+use actix_web::{get, post, web, App, HttpRequest, HttpResponse, HttpServer};
 
-struct Error {}
+// struct Error {}
 
-fn handle_request(request: Request) -> Result<HttpResponse, Error> {
-    match request.body().unwrap() {
+#[actix_web::post("/")]
+async fn handle_request(info: String) -> Result<HttpResponse, CLiError> {
+    // match request.("name").unwrap() {
+
+    match info.as_str() {
         "DetachRequest" => {}
 
-        "AttachRequest" => {}
+        "AttachRequest" => {
+            // AttachRequest {}
+        }
 
-        "CompleteWordsRequest" => {}
+        "CompleteWordsRequest" => {
+            // CompleteWordsRequest{}
+        }
         "InitScriptRequest" => {}
 
         "ListClientsRequest" => {}
@@ -47,6 +52,10 @@ fn handle_request(request: Request) -> Result<HttpResponse, Error> {
 // use {Serialize, Deserialize};
 
 // use serde;
+
+trait Cmd {
+    fn run(&self) -> Result<(), CLiError>;
+}
 
 #[derive(Serialize, Deserialize)]
 struct AttachRequest {
