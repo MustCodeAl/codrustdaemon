@@ -4,11 +4,6 @@ pub struct Command {
     dir: String,
 }
 
-impl Command {
-    pub(crate) fn len(&self) -> usize {
-        todo!()
-    }
-}
 
 pub struct Completion {
     flag: String,
