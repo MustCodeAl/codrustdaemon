@@ -1,4 +1,4 @@
-
+mod ui;
 
 use std::fs;
 use clap::Parser;
