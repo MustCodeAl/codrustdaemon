@@ -4,8 +4,10 @@ trait ShellScriptGenerator {
     fn generate_completions(&self) -> Vec<String>;
     fn reset_command(&mut self) -> Vec<String>;
 }
+
 // pub use crate::datastore::data::completion;
 struct Completion;
+
 struct DataStore {
     completions: Vec<Completion>,
     shell: String,
@@ -49,12 +51,12 @@ impl ShellScriptGenerator for Shell {
             ShellType::Fish => {
                 std::fs::read_to_string("fish_preamble.sh").unwrap()
             }
-        //     ShellType::Powershell => {
-        //         std::fs::read_to_string("powershell_preamble.sh").unwrap()
-        //     }
-        //     ShellType::Cmd => {
-        //         std::fs::read_to_string("cmd_preamble.sh").unwrap()
-        //     }
+            //     ShellType::Powershell => {
+            //         std::fs::read_to_string("powershell_preamble.sh").unwrap()
+            //     }
+            //     ShellType::Cmd => {
+            //         std::fs::read_to_string("cmd_preamble.sh").unwrap()
+            //     }
         };
         todo!()
     }
@@ -72,12 +74,12 @@ impl ShellScriptGenerator for Shell {
         let mut lines: Vec<String> = Vec::new();
 
         match self.shell_type {
-            ShellType::Bash => {
-                // should return cod command path
-                lines.push(format!("__cod_clear_completions \n{}", self.executable_path0.0.file_name().unwrap().to_str().unwrap()));
-                lines
-            }
-            ShellType::Zsh => {
+            //     ShellType::Bash => {
+            //         // should return cod command path
+            //         lines.push(format!("__cod_clear_completions \n{}", self.executable_path0.0.file_name().unwrap().to_str().unwrap()));
+            //         lines
+            //     }
+            ShellType::Zsh | ShellType::Bash => {
                 // should return cod command path
                 lines.push(format!("__cod_clear_completions \n{}", self.executable_path0.0.file_name().unwrap().to_str().unwrap()));
                 lines
@@ -98,7 +100,6 @@ impl ShellScriptGenerator for Shell {
             //     lines
             // }
         }
-
 
 
         // todo!()
