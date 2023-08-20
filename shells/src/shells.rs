@@ -64,9 +64,26 @@ impl ShellScriptGenerator for Shell {
     fn generate_completions(&self) -> Vec<String> {
         let mut lines: Vec<String> = Vec::new();
 
+        todo!("generate_completions");
         // should return cod command path
-        lines.push(format!("__cod_clear_completions \n{}", self.executable_path0.0.file_name().unwrap().to_str().unwrap()));
-        lines
+        match self.shell_type {
+
+            ShellType::Bash  => {
+                lines.push(format!("__cod_clear_completions \n{}", self.executable_path0.0.file_name().unwrap().to_str().unwrap()));
+                lines
+            }
+            ShellType::Zsh => {
+                lines.push(format!("__cod_clear_completions \n{}", self.executable_path0.0.file_name().unwrap().to_str().unwrap()));
+                lines
+            }
+            ShellType::Fish => {
+                lines.push(format!("complete --command %{} --erase\n", self.executable_path0.0.file_name().unwrap().to_str().unwrap()));
+                lines
+            }
+        }
+
+        // lines.push(format!("__cod_clear_completions \n{}", self.executable_path0.0.file_name().unwrap().to_str().unwrap()));
+        // lines
 
         // todo!()
     }
