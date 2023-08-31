@@ -12,6 +12,7 @@ fn quote(args: &Vec<String>) -> String {
             '$'| '`'| '\\'| '"'| ' '| '\t'| '\n'|
             '*'| '?'| '['| ']'| '#'| '~'| '='| '%' => {
                 quoted.push(format!("\"{arg}\"" ));
+                 //todo finish this
 
             }
             _ => {
