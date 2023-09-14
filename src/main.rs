@@ -1,4 +1,5 @@
 mod ui;
+mod api_attach;
 
 use std::fs;
 use clap::Parser;
@@ -19,7 +20,7 @@ fn main() {
     // let learn = LearnCommand::parse();
     //     if learn {
     //         println!("learn");
-             // add to completions
+    // add to completions
 // add to fig completitions
 // add to zsh completions
 //         }
